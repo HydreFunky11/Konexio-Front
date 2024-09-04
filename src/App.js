@@ -20,13 +20,13 @@ function App() {
         const formData = new FormData();
         formData.append('file', file);
 
-        response = await axios.post('http://127.0.0.1:5000/upload', formData, {
+        response = await axios.post('http://'+ document.location.hostname +':5000/upload', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
         });
       } else {
-        response = await axios.post('http://127.0.0.1:5000/predict', {
+        response = await axios.post('http://'+ document.location.hostname +':5000/predict', {
           phrase: phrase,
         });
       }
