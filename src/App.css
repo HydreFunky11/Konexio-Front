@@ -1,117 +1,185 @@
-.app {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%; 
+/* Styles généraux */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f7fc;
+  color: #2c3e50;
+  margin: 0;
+  padding: 0;
 }
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+}
+
+.app {
+  max-width: 90%;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
 
 .container {
   display: flex;
-  flex-direction: row;
-  width: 100%;
-}
-
-.form {
-  flex: 1;
-  display: flex;
   flex-direction: column;
-  align-items: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  height: 500px;
-  width: 100%;
-  max-width: 50%;
-  padding: 20px;
-  border-radius: 4px;
+  gap: 20px;
 }
 
-.textarea {
+textarea.textarea {
   width: 100%;
-  height: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #787777;
-  border-radius: 4px;
-  resize: none;
-}
-
-.button {
-  background-color: #007bff;
-  color: #fff;
-  padding: 14px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 100%;
+  height: 120px;
+  padding: 15px;
+  border: 2px solid #bdc3c7;
+  border-radius: 8px;
   font-size: 16px;
+  resize: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.button:hover {
-  background-color: #0056b3;
+textarea.textarea:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.4);
+  outline: none;
 }
 
-.result-section {
+form.form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+button.button, button.vider {
   flex: 1;
-  background-color: #e9ffe9;
-  width: 50%;
-  border-radius: 4px;
+  max-width: 200px;
+}
+
+input.file-input {
+  flex: 2;
+  max-width: 100%;
+}
+
+/* Boutons */
+button.button, button.vider {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  color: white;
+  background-color: #3498db;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button.vider {
+  background-color: #e74c3c;
+}
+
+button.button:hover, button.vider:hover {
+  background-color: #2980b9;
+  transform: translateY(-3px);
+}
+
+button.vider:hover {
+  background-color: #c0392b;
+}
+
+/* Champ de fichier */
+input.file-input {
+  padding: 10px;
+  border: 2px solid #bdc3c7;
+  border-radius: 6px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input.file-input:hover {
+  border-color: #3498db;
+  background-color: #ecf0f1;
+}
+
+/* Résultats */
+.result-section {
+  margin-top: 20px;
 }
 
 .annotation-container {
   display: flex;
   justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
 }
+
 
 .annotation-column {
   flex: 1;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border: 2px solid #e0e0e0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  min-width: 200px;
+  max-width: 100%;
 }
 
 .annotation-title {
-  margin-top: 20px;
-  color: #333;
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #34495e;
 }
 
 .annotation-list {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
-  margin: 10px 0;
 }
 
 .annotation-list li {
-  margin: 5px 0;
+  font-size: 16px;
+  padding: 5px 0;
 }
 
+.annotation-biais-masculin {
+  color: #89b2c8;
+}
+
+.annotation-biais-feminin {
+  color: #cfcf03;
+}
+
+/* Phrase annotée */
 .annotated-phrase {
-  background-color: #ececec;
-  border-radius: 4px;
-  width: 100%;  
-  max-width: 100%;
-  padding: 20px;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  box-sizing: border-box;
-  height: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #787777;
-  border-radius: 4px;
-  resize: none;
-  white-space: pre-wrap;
+  margin-top: 20px;
 }
 
-.annotation-title.annotation-biais-masculin {
-  color: #678392;
+.annotated-phrase p {
+  font-size: 16px;
+  line-height: 1.5;
 }
 
-.annotation-title.annotation-biais-feminin {
-  color: #8c8c00;
+strong.biais-masculin {
+  color: #89b2c8;
 }
 
-.biais-masculin {
-  color: #678392;
-  text-decoration : underline;
+strong.biais-feminin {
+  color: #cfcf03;
 }
 
-.biais-feminin {
-  color: #8c8c00;
-  text-decoration : underline;
+@media (max-width: 768px) {
+  .annotation-container {
+    flex-direction: column;
+  }
+
+  button.button, button.vider {
+    width: 100%;
+  }
+
+  input.file-input {
+    width: 100%;
+  }
 }

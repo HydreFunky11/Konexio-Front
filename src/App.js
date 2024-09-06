@@ -32,15 +32,24 @@ function App() {
       }
 
       setResult(response.data);
+      setPhrase(response.data.phrase);
+      
     } catch (error) {
       console.error('Error:', error);
     }
   };
 
+
   const handleKeyPress = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       handleSubmit(e);
     }
+  };
+
+  const handleFileReset = () => {
+    setFile(null);
+    document.querySelector('.file-input').value = '';
+    setPhrase('');
   };
 
   const findAnnotatedSequences = (phrase, annotations) => {
@@ -111,10 +120,15 @@ function App() {
             onChange={handleFileChange} 
             className="file-input"
           />
+          <button type="button" onClick={handleFileReset} className="vider">Réinitialiser</button>
           <button type="submit" className="button">Envoyer</button>
         </form>
         {result && (
           <div className="result-section">
+            <div className="annotated-phrase">
+              <h3>Phrase Annotée:</h3>
+              {renderAnnotatedPhrase()}
+            </div>
             <div className="annotation-container">
               <div className="annotation-column">
                 <h3 className="annotation-title annotation-biais-masculin">Biais Masculin:</h3>
@@ -141,10 +155,7 @@ function App() {
                 </ul>
               </div>
             </div>
-            <div className="annotated-phrase">
-              <h3>Phrase Annotée:</h3>
-              {renderAnnotatedPhrase()}
-            </div>
+
           </div>
         )}
       </div>
